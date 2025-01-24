@@ -93,7 +93,7 @@ class CustomerAccount(db.Model):
 
 @app.route('/')
 def home():
-    return "Welcome to the E-Commerce API Database!"
+    return "Welcome to the E Commerce API Database!"
 
 @app.route('/users', methods=['GET'])
 def read_users():
@@ -110,7 +110,7 @@ def create_users():
     new_user = User(name=user_data['name'], email=user_data['email'], phone=user_data['phone'])
     db.session.add(new_user)
     db.session.commit()
-    return jsonify({"message": "New user added successfully"}), 201
+    return jsonify({"Attn": "New user added successfully"}), 201
 
 @app.route('/users/<int:id>', methods=['PUT'])
 def update_users(id):
@@ -125,14 +125,14 @@ def update_users(id):
     user.phone = user_data['phone']
 
     db.session.commit()
-    return jsonify({"message": "Customer details updated successfully"}), 200
+    return jsonify({"Attn": "Customer details updated successfully"}), 200
 
 @app.route('/users/<int:id>', methods=['DELETE'])
 def delete_users(id):
     user = User.query.get_or_404(id)
     db.session.delete(user)
     db.session.commit()
-    return jsonify({"message": "User has been deleted successfully"}), 200
+    return jsonify({"Attn": "User has been deleted successfully"}), 200
 
 @app.route('/accounts', methods=['POST'])
 def create_user_accounts():
@@ -144,7 +144,7 @@ def create_user_accounts():
     new_user_account = CustomerAccount(username=account_data['username'], password=account_data['password'], user_id=account_data['user_id'])
     db.session.add(new_user_account)
     db.session.commit()
-    return jsonify({"message": "New user account added successfully"}), 201
+    return jsonify({"Attn": "New user account added successfully"}), 201
 
 @app.route('/accounts', methods=['GET'])
 def read_user_accounts():
@@ -163,14 +163,14 @@ def update_user_accounts(user_id):
     user_account.password = account_data['password']
 
     db.session.commit()
-    return jsonify({"message": "Customer's account details updated successfully"}), 200
+    return jsonify({"Attn": "Customer's account details updated successfully"}), 200
 
 @app.route('/accounts/<int:user_id>', methods=['DELETE'])
 def delete_user_accounts(user_id):
     user_account = CustomerAccount.query.get_or_404(user_id)
     db.session.delete(user_account)
     db.session.commit()
-    return jsonify({"message": "User account has been deleted successfully"}), 200
+    return jsonify({"Attn": "User account has been deleted successfully"}), 200
 
 @app.route('/products', methods=['POST'])
 def create_products():
@@ -182,7 +182,7 @@ def create_products():
     new_product = Product(name=product_data['name'], price=product_data['price'], quantity=product_data['quantity'])
     db.session.add(new_product)
     db.session.commit()
-    return jsonify({"message": "New product has been added successfully"}), 201
+    return jsonify({"Attn": "New product has been added successfully"}), 201
 
 @app.route('/products/<int:id>', methods=['GET'])
 def read_product(id):
@@ -202,14 +202,14 @@ def update_products(id):
     products.quantity = product_data['quantity']
 
     db.session.commit()
-    return jsonify({"message": "Product details updated successfully"}), 200
+    return jsonify({"Attn": "Product details updated successfully"}), 200
 
 @app.route('/products/<int:id>', methods=['DELETE'])
 def delete_products(id):
     product = Product.query.get_or_404(id)
     db.session.delete(product)
     db.session.commit()
-    return jsonify({"message": "Product has been deleted successfully"}), 200
+    return jsonify({"Attn": "Product has been deleted successfully"}), 200
 
 @app.route('/stock/<int:id>', methods=['GET'])
 def view_and_manage_stock(id):
@@ -221,7 +221,7 @@ def view_and_manage_stock(id):
 
     product.quantity = product_data['quantity']
     db.session.commit()
-    return jsonify({"message": "Product quantity details have beeen updated successfully"}), 200
+    return jsonify({"Attn": "Product quantity details have beeen updated successfully"}), 200
 
 @app.route('/orders', methods=['POST'])
 def order_products():
@@ -238,7 +238,7 @@ def order_products():
     new_order = Order(date=order_data['date'], user_id=order_data['user_id'], total_price=total_price)
     db.session.add(new_order)
     db.session.commit()
-    return jsonify({"message": "New order has been created successfully"})
+    return jsonify({"Attn": "New order has been created successfully"})
 
 @app.route('/orders/<int:id>', methods=['GET'])
 def retrieve_orders(id):
@@ -250,7 +250,7 @@ def cancel_order(id):
     order = Order.query.get_or_404(id)
     db.session.delete(order)
     db.session.commit()
-    return jsonify({"message": "This order has been canceled successfully"}), 200
+    return jsonify({"Attn": "This order has been canceled successfully"}), 200
     
 
 with app.app_context():
